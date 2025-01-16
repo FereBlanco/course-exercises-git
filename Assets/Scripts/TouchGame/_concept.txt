@@ -1,0 +1,63 @@
+What is the game about?
+    One player game
+    The player has to click on the coins and objects than fall from the top of the screen
+    Each clicked object gives you a score (the smaller the object, the higher the score)
+    The game ends when an object touch the pikes on the bottom of the screen
+    There are floating elastic platforms on the screen that slow down the fall of objects.
+
+How many objects can you identify?
+    Coins (3 different sizes)
+    Carrots
+    Burst effects (particles)
+    Platforms (some rigid and some elastic, and they have a entering effect at the begining of the game)
+    Spikes zone at the botton
+    Background
+    Audio:
+        Background music (horrible)
+        Effects:
+            Click
+            Game end
+            Burst
+            Hit between objects and platforms
+
+Which objects are purely aesthetic?
+    Background
+
+Which objects have behavior?
+    Clickable objects (coins and carrots):
+        They have physics (fall from the top)
+        Can be clicked (score points)
+        Spikes at the bottom (if an object touch them, GameOver) > Every object is destroyed
+        GameOver effect
+        Destroy other objects
+
+    WorlManager:
+        Create clickable objects
+            How many?
+                We'll stablish a max limit
+            Which one?
+                Random
+            How?
+                Instanciate (or Object Pool pattern)
+            Where?
+                Over the screen
+                Random X < screen width
+            When?
+                Random time between min & max value
+
+Which elements does the HUD have?
+    Canvas:
+        Score:
+            Current Score
+            Hight Score
+            Score Bakcground
+        Menu:
+            Play Button
+
+    Game Flow:
+        Menu -> InGame
+        InGame -> Menu (GameOver event)
+    Score
+    High score
+
+Which responsibilities can you identify?

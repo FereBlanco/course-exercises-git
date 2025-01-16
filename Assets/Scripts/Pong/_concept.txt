@@ -1,0 +1,51 @@
+What is the game about?
+    two players
+    each player control a rectangle with vertical movement
+    a ball that bounces over all the screen
+    if the ball cross the lateral limit of a player, the other player increases his score
+    each player will try to score more goals than the other
+
+How many objects can you identify?
+    1 ball
+    2 paddles
+    2 goal areas (not visible)
+    2 score numbers
+    1 net
+    2 limits (upper and lower)
+    backgound
+
+    effects:
+        sound paddle - ball
+        sound limit - ball
+        sound goal area - ball
+
+Which objects are purely aesthetic?
+    net and background
+
+Which objects have behavior?
+    ball:
+        moves horizontal and vertical
+        bounces against rectangles and borders
+        if cross the lateral limit of a player, this player receives a goal
+    paddles:
+        move vertical along the lateral limit of each player
+        are used to repel the ball towards the other player's area
+    score numbers:
+        increases in one unit whean a player scores a goal (the ball cross the lateral limit of the other player)
+
+Which elements does the HUD have?
+    score numbers that show the goals scored by each player
+
+Which responsibilities can you identify?
+    ball:
+        moves horizontal and vertical
+        bounces against rectangles and borders
+        if crosses the lateral limit of a player, this player receives a goal
+        in the begining and after one goal the ball respawn over the net, in the center of the screen
+        its velocity and bouncing angle are related with the velocity of the rectangles and the part of them hitten by the ball
+    rectangle:
+        moves vertical
+    lateral player limits:
+        if the ball crosses this limit a new goal is scored
+    score numbers:
+        increases in one unit if one player scores a goal
