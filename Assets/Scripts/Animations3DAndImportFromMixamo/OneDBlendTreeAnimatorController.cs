@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Scripts.Animations3DAndImportFromMixamo
 {
-    public class NoBlendTreeAnimatorController : MonoBehaviour
+    public class OneDBlendTreeAnimatorController : MonoBehaviour
     {
         Animator animator;
         Rigidbody myRigibody; // Use the new keyword if hiding was intended
@@ -39,13 +39,16 @@ namespace Scripts.Animations3DAndImportFromMixamo
 
         private void UpdateAnimation()
         {
-            animator.SetBool(Constants.IS_WALKING, IsWalking());
-            animator.SetBool(Constants.IS_RUNNING, IsRunning());
+            if (verticalInput > 0 )
+            {
+                animator.SetFloat(Constants.ANIMATOR_PARAM_SPEED, verticalInput);
+            }
         }
 
         private void UpdateRigidbody()
         {
             var finalTranslateSpeed = IsWalking() && IsRunning() ? runningSpeed : IsWalking() ? walkingSpeed : 0;
+
             myRigibody.velocity = (verticalInput > 0) ? verticalInput * finalTranslateSpeed * transform.forward : Vector3.zero;
             myRigibody.angularVelocity = (verticalInput > 0) ? horizontalInput * rotateSpeed * Vector3.up * Mathf.Deg2Rad : Vector3.zero;
         }

@@ -7,5 +7,6 @@ namespace Scripts.Animations3DAndImportFromMixamo
         public const string HORIZONTAL_INPUT = "Horizontal";
         public const string IS_WALKING = "IsWalking";
         public const string IS_RUNNING = "IsRunning";
+        public const string ANIMATOR_PARAM_SPEED = "Speed";        
     }
 }
