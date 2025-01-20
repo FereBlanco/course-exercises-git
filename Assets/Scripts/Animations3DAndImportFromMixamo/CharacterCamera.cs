@@ -10,12 +10,9 @@ namespace Scripts.Animations3DAndImportFromMixamo
     {
         [SerializeField] Transform targetTransform;
         private Vector3 offset;
-        float offsetX = -1.5f;
-        float offsetZ = -2.5f;
 
         private void Awake() {
             Assert.IsNotNull(targetTransform, "ERROR: targetTransform is null");
-            // transform.position = targetTransform.position + new Vector3(offsetX, 0f, offsetZ);
             transform.LookAt(targetTransform);
 
             offset = transform.position - targetTransform.position;
