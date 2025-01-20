@@ -5,17 +5,30 @@ using UnityEngine;
 
 public class Recursion05 : MonoBehaviour
 {
-    private void Start() {
-        int numCalls = 5;
-        float stepTime = 2f;
-        Debug.Log("START!");
-        StartCoroutine(DelayedCall(1, numCalls, stepTime));
+    [SerializeField] int numCalls = 5;
+    [SerializeField] float stepTime = 2f;
+    [SerializeField] bool isNested = true;
+    private void Awake() {
+        Debug.Log($"START! - Time: {Time.time}");
+        StartCoroutine(DelayedCall(1, numCalls));
     }
 
-    IEnumerator DelayedCall(int idCall, int numCalls, float stepTime)
+    IEnumerator DelayedCall(int idCall, int numCalls)
     {
+        Debug.Log($"{idCall} :: START DELAYED CALL!!! - Time: {Time.time}");
         yield return new WaitForSeconds(stepTime);
-        if (numCalls > 1) StartCoroutine(DelayedCall(idCall + 1, numCalls-1, stepTime));
-        Debug.Log($"{idCall} :: DELAYED CALL!!!");
+        if (numCalls > 1)
+        {
+            if (isNested)
+            {
+                // Nested recursive calls are generally not recommended, but can sometimes be useful to achieve a certain behavior.
+                yield return StartCoroutine(DelayedCall(idCall + 1, numCalls-1));
+            }
+            else
+            {
+                StartCoroutine(DelayedCall(idCall + 1, numCalls-1));
+            }
+        }
+        Debug.Log($"{idCall} :: END (isNested = {isNested}) DELAYED CALL!!! - Time: {Time.time}");
     }
 }
